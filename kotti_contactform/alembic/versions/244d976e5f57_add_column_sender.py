@@ -21,7 +21,9 @@ contact_form = table('contact_forms', column('sender', sa.String(255)))
 def upgrade():
     op.add_column('contact_forms', sa.Column('sender', sa.String(255)))
     op.execute(contact_form.update().values({'sender': 'mail@domain.com'}))
-    op.alter_column('contact_forms', 'sender', nullable=False)
+    connection = op.get_bind()
+    if not 'sqlite' in connection.dialect.dialect_description:
+        op.alter_column('contact_forms', 'sender', nullable=False)
 
 
 def downgrade():
