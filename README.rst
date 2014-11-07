@@ -42,7 +42,7 @@ Database upgrade
 If you upgrade to version 0.1.1 or 0.4 you have to migrate your
 database. The migration is performed with `alembic`_ and Kotti's
 console script ``kotti-migrate``. To migrate, run ``kotti-migrate
-upgrade_all --scripts=kotti_contactform:alembic``.
+development.ini upgrade --scripts=kotti_contactform:alembic``.
 
 For integration of alembic in your environment please refer to the
 `alembic documentation`_. If you have problems with the upgrade,
